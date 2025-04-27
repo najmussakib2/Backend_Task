@@ -63,3 +63,6 @@ The backend system for a Course Learning Platform that connects students and tea
 4. run in prod mode:
     ```bash
     npm run start:prod
+
+
+### connect postman_collection.json to postman to test
