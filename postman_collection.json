@@ -35,12 +35,12 @@
 				]
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/users/register",
+				"raw": "{{base_url}}/api/v1/users/register",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "users",
 				  "register"
 				]
@@ -73,12 +73,12 @@
 				]
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/users/register",
+				"raw": "{{base_url}}/api/v1/users/register",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "users",
 				  "register"
 				]
@@ -100,12 +100,12 @@
 				"raw": "{\n  \"email\": \"student@example.com\",\n  \"password\": \"12345\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/auth/login",
+				"raw": "{{base_url}}/api/v1/auth/login",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "auth",
 				  "login"
 				]
@@ -123,12 +123,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/auth/me",
+				"raw": "{{base_url}}/api/v1/auth/me",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "auth",
 				  "me"
 				]
@@ -154,12 +154,12 @@
 				"raw": "{\n  \"status\": \"active\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/users/change-status/{{user_id}}",
+				"raw": "{{base_url}}/api/v1/users/change-status/{{user_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "users",
 				  "change-status",
 				  "{{user_id}}"
@@ -191,12 +191,12 @@
 				"raw": "{\n  \"title\": \"Advanced React\",\n  \"description\": \"Deep dive into React hooks\",\n  \"thumbnail\": \"react-logo.png\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/courses",
+				"raw": "{{base_url}}/api/v1/courses",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses"
 				]
 			  }
@@ -221,12 +221,12 @@
 				"raw": "{\n  \"courseId\": \"{{course_id}}\",\n  \"title\": \"React Hooks\",\n  \"description\": \"Understanding useState and useEffect\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/courses/add-lesson",
+				"raw": "{{base_url}}/api/v1/courses/add-lesson",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses",
 				  "add-lesson"
 				]
@@ -244,12 +244,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/courses",
+				"raw": "{{base_url}}/api/v1/courses",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses"
 				]
 			  }
@@ -266,12 +266,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/courses/{{course_id}}",
+				"raw": "{{base_url}}/api/v1/courses/{{course_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses",
 				  "{{course_id}}"
 				]
@@ -289,12 +289,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/courses/teacher/{{teacher_id}}",
+				"raw": "{{base_url}}/api/v1/courses/teacher/{{teacher_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses",
 				  "teacher",
 				  "{{teacher_id}}"
@@ -313,12 +313,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/courses/like/{{course_id}}",
+				"raw": "{{base_url}}/api/v1/courses/like/{{course_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses",
 				  "like",
 				  "{{course_id}}"
@@ -345,12 +345,12 @@
 				"raw": "{\n  \"title\": \"Updated Course Title\",\n  \"description\": \"New updated description\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/courses/{{course_id}}",
+				"raw": "{{base_url}}/api/v1/courses/{{course_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses",
 				  "{{course_id}}"
 				]
@@ -368,12 +368,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/courses/{{course_id}}",
+				"raw": "{{base_url}}/api/v1/courses/{{course_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses",
 				  "{{course_id}}"
 				]
@@ -396,12 +396,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/courses/enroll/{{course_id}}",
+				"raw": "{{base_url}}/api/v1/courses/enroll/{{course_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses",
 				  "enroll",
 				  "{{course_id}}"
@@ -420,12 +420,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/enrollments",
+				"raw": "{{base_url}}/api/v1/enrollments",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "enrollments"
 				]
 			  }
@@ -450,12 +450,12 @@
 				"raw": "{\n \"progress\":{\n  \"completedTopics\": [\"{{topic_id}}\"]\n} \n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/enrollments/progress/{{enrollment_id}}",
+				"raw": "{{base_url}}/api/v1/enrollments/progress/{{enrollment_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "enrollments",
 				  "progress",
 				  "{{enrollment_id}}"
@@ -487,12 +487,12 @@
 				"raw": "{\n  \"lessonId\": \"{{lesson_id}}\",\n  \"type\": \"content\",\n  \"title\": \"New Topic\",\n  \"content\": \"Detailed content here\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/lessons/add-topic",
+				"raw": "{{base_url}}/api/v1/lessons/add-topic",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "lessons",
 				  "add-topic"
 				]
@@ -518,12 +518,12 @@
 				"raw": "{\n  \"title\": \"Updated Lesson Title\",\n  \"description\": \"New description\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/lessons/{{lesson_id}}",
+				"raw": "{{base_url}}/api/v1/lessons/{{lesson_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "lessons",
 				  "{{lesson_id}}"
 				]
@@ -541,12 +541,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/lessons/{{lesson_id}}",
+				"raw": "{{base_url}}/api/v1/lessons/{{lesson_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "lessons",
 				  "{{lesson_id}}"
 				]
@@ -577,12 +577,12 @@
 				"raw": "{\n  \"title\": \"Updated Topic Title\",\n  \"content\": \"New content\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/topics/{{topic_id}}",
+				"raw": "{{base_url}}/api/v1/topics/{{topic_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "topics",
 				  "{{topic_id}}"
 				]
@@ -600,12 +600,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/topics/{{topic_id}}",
+				"raw": "{{base_url}}/api/v1/topics/{{topic_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "topics",
 				  "{{topic_id}}"
 				]
@@ -636,12 +636,12 @@
 				"raw": "{\n  \"rating\": 5,\n  \"comment\": \"Great course!\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/courses/feedback/{{course_id}}",
+				"raw": "{{base_url}}/api/v1/courses/feedback/{{course_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses",
 				  "feedback",
 				  "{{course_id}}"
@@ -660,12 +660,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/courses/feedback/{{course_id}}",
+				"raw": "{{base_url}}/api/v1/courses/feedback/{{course_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "courses",
 				  "feedback",
 				  "{{course_id}}"
@@ -689,12 +689,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/teachers/follow/{{teacher_id}}",
+				"raw": "{{base_url}}/api/v1/teachers/follow/{{teacher_id}}",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "teachers",
 				  "follow",
 				  "{{teacher_id}}"
@@ -713,12 +713,12 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/teachers/stats",
+				"raw": "{{base_url}}/api/v1/teachers/stats",
 				"host": [
 				  "{{base_url}}"
 				],
 				"path": [
-				  "api",
+				  "api", "v1",
 				  "teachers",
 				  "stats"
 				]
