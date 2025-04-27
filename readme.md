@@ -65,4 +65,4 @@ The backend system for a Course Learning Platform that connects students and tea
     npm run start:prod
 
 
-### connect postman_collection.json to postman to test
+### Import the postman_collection.json into Postman to test.
