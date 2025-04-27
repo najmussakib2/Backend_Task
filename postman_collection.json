@@ -1,16 +1,16 @@
 {
 	"info": {
 	  "_postman_id": "a1b2c3d4-e5f6-7890-f1e2-d3c4b5a6f7e8",
-	  "name": "Course Learning App API",
+	  "name": "Course Learning App API (Complete)",
 	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-	  "description": "Postman collection for Course Learning App backend API"
+	  "description": "Complete Postman collection for Course Learning App backend API"
 	},
 	"item": [
 	  {
 		"name": "Authentication",
 		"item": [
 		  {
-			"name": "Register User",
+			"name": "Register Student",
 			"request": {
 			  "method": "POST",
 			  "header": [
@@ -20,13 +20,68 @@
 				}
 			  ],
 			  "body": {
-				"mode": "raw",
-				"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"student\"\n}"
+				"mode": "formdata",
+				"formdata": [
+				  {
+					"key": "file",
+					"type": "file",
+					"src": "/F:/level2/images/Student/student-2.png"
+				  },
+				  {
+					"key": "data",
+					"value": "{\n    \"password\": \"12345\",\n    \"userData\": {\n        \"name\":\"john doe\",\n    \"email\":\"john@gmail.com\",\n        \"role\": \"student\"\n    }\n}",
+					"type": "text"
+				  }
+				]
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/auth/register",
-				"host": ["{{base_url}}"],
-				"path": ["api", "auth", "register"]
+				"raw": "{{base_url}}/api/users/register",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "users",
+				  "register"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Register Teacher",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "formdata",
+				"formdata": [
+				  {
+					"key": "file",
+					"type": "file",
+					"src": "/F:/level2/images/Student/student-2.png"
+				  },
+				  {
+					"key": "data",
+					"value": "{\n    \"password\": \"12345\",\n    \"userData\": {\n        \"name\":\"Issac Newton\",\n    \"email\":\"newton@gmail.com\",\n        \"role\": \"teacher\"\n    }\n}",
+					"type": "text"
+				  }
+				]
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/users/register",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "users",
+				  "register"
+				]
 			  }
 			}
 		  },
@@ -42,12 +97,18 @@
 			  ],
 			  "body": {
 				"mode": "raw",
-				"raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+				"raw": "{\n  \"email\": \"student@example.com\",\n  \"password\": \"12345\"\n}"
 			  },
 			  "url": {
 				"raw": "{{base_url}}/api/auth/login",
-				"host": ["{{base_url}}"],
-				"path": ["api", "auth", "login"]
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "auth",
+				  "login"
+				]
 			  }
 			}
 		  },
@@ -63,8 +124,46 @@
 			  ],
 			  "url": {
 				"raw": "{{base_url}}/api/auth/me",
-				"host": ["{{base_url}}"],
-				"path": ["api", "auth", "me"]
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "auth",
+				  "me"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Change User Status",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{admin_token}}"
+				},
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"status\": \"active\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/users/change-status/{{user_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "users",
+				  "change-status",
+				  "{{user_id}}"
+				]
 			  }
 			}
 		  }
@@ -74,27 +173,63 @@
 		"name": "Courses",
 		"item": [
 		  {
-			"name": "Create Course (Teacher)",
+			"name": "Create Course",
 			"request": {
 			  "method": "POST",
 			  "header": [
 				{
-				  "key": "Content-Type",
-				  "value": "application/json"
-				},
-				{
 				  "key": "Authorization",
 				  "value": "Bearer {{teacher_token}}"
+				},
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
 				}
 			  ],
 			  "body": {
 				"mode": "raw",
-				"raw": "{\n  \"title\": \"Introduction to Node.js\",\n  \"description\": \"Learn the fundamentals of Node.js\",\n  \"category\": \"Programming\"\n}"
+				"raw": "{\n  \"title\": \"Advanced React\",\n  \"description\": \"Deep dive into React hooks\",\n  \"thumbnail\": \"react-logo.png\"\n}"
 			  },
 			  "url": {
 				"raw": "{{base_url}}/api/courses",
-				"host": ["{{base_url}}"],
-				"path": ["api", "courses"]
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Add Lesson to Course",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				},
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"courseId\": \"{{course_id}}\",\n  \"title\": \"React Hooks\",\n  \"description\": \"Understanding useState and useEffect\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/courses/add-lesson",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses",
+				  "add-lesson"
+				]
 			  }
 			}
 		  },
@@ -102,31 +237,146 @@
 			"name": "Get All Courses",
 			"request": {
 			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{auth_token}}"
+				}
+			  ],
 			  "url": {
 				"raw": "{{base_url}}/api/courses",
-				"host": ["{{base_url}}"],
-				"path": ["api", "courses"],
-				"query": [
-				  {
-					"key": "page",
-					"value": "1"
-				  },
-				  {
-					"key": "limit",
-					"value": "10"
-				  }
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses"
 				]
 			  }
 			}
 		  },
 		  {
-			"name": "Get Course Details",
+			"name": "Get Single Course",
 			"request": {
 			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{auth_token}}"
+				}
+			  ],
 			  "url": {
 				"raw": "{{base_url}}/api/courses/{{course_id}}",
-				"host": ["{{base_url}}"],
-				"path": ["api", "courses", "{{course_id}}"]
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses",
+				  "{{course_id}}"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Get Teacher's Courses",
+			"request": {
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{auth_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/courses/teacher/{{teacher_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses",
+				  "teacher",
+				  "{{teacher_id}}"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Like Course",
+			"request": {
+			  "method": "PUT",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{auth_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/courses/like/{{course_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses",
+				  "like",
+				  "{{course_id}}"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Update Course",
+			"request": {
+			  "method": "PUT",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				},
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"title\": \"Updated Course Title\",\n  \"description\": \"New updated description\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/courses/{{course_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses",
+				  "{{course_id}}"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Delete Course",
+			"request": {
+			  "method": "DELETE",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/courses/{{course_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses",
+				  "{{course_id}}"
+				]
 			  }
 			}
 		  }
@@ -146,9 +396,16 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/courses/{{course_id}}/enroll",
-				"host": ["{{base_url}}"],
-				"path": ["api", "courses", "{{course_id}}", "enroll"]
+				"raw": "{{base_url}}/api/courses/enroll/{{course_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses",
+				  "enroll",
+				  "{{course_id}}"
+				]
 			  }
 			}
 		  },
@@ -164,20 +421,119 @@
 			  ],
 			  "url": {
 				"raw": "{{base_url}}/api/enrollments",
-				"host": ["{{base_url}}"],
-				"path": ["api", "enrollments"]
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "enrollments"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Update Enrollment Progress",
+			"request": {
+			  "method": "PUT",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{student_token}}"
+				},
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n \"progress\":{\n  \"completedTopics\": [\"{{topic_id}}\"]\n} \n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/enrollments/progress/{{enrollment_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "enrollments",
+				  "progress",
+				  "{{enrollment_id}}"
+				]
 			  }
 			}
 		  }
 		]
 	  },
 	  {
-		"name": "Teacher Stats",
+		"name": "Lessons",
 		"item": [
 		  {
-			"name": "Get Teacher Stats",
+			"name": "Add Topic to Lesson",
 			"request": {
-			  "method": "GET",
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				},
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"lessonId\": \"{{lesson_id}}\",\n  \"type\": \"content\",\n  \"title\": \"New Topic\",\n  \"content\": \"Detailed content here\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/lessons/add-topic",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "lessons",
+				  "add-topic"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Update Lesson",
+			"request": {
+			  "method": "PUT",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				},
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"title\": \"Updated Lesson Title\",\n  \"description\": \"New description\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/lessons/{{lesson_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "lessons",
+				  "{{lesson_id}}"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Delete Lesson",
+			"request": {
+			  "method": "DELETE",
 			  "header": [
 				{
 				  "key": "Authorization",
@@ -185,9 +541,74 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/teachers/{{teacher_id}}/stats",
-				"host": ["{{base_url}}"],
-				"path": ["api", "teachers", "{{teacher_id}}", "stats"]
+				"raw": "{{base_url}}/api/lessons/{{lesson_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "lessons",
+				  "{{lesson_id}}"
+				]
+			  }
+			}
+		  }
+		]
+	  },
+	  {
+		"name": "Topics",
+		"item": [
+		  {
+			"name": "Update Topic",
+			"request": {
+			  "method": "PUT",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				},
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"title\": \"Updated Topic Title\",\n  \"content\": \"New content\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/topics/{{topic_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "topics",
+				  "{{topic_id}}"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Delete Topic",
+			"request": {
+			  "method": "DELETE",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/topics/{{topic_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "topics",
+				  "{{topic_id}}"
+				]
 			  }
 			}
 		  }
@@ -202,12 +623,12 @@
 			  "method": "POST",
 			  "header": [
 				{
-				  "key": "Content-Type",
-				  "value": "application/json"
-				},
-				{
 				  "key": "Authorization",
 				  "value": "Bearer {{student_token}}"
+				},
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
 				}
 			  ],
 			  "body": {
@@ -215,19 +636,74 @@
 				"raw": "{\n  \"rating\": 5,\n  \"comment\": \"Great course!\"\n}"
 			  },
 			  "url": {
-				"raw": "{{base_url}}/api/courses/{{course_id}}/feedback",
-				"host": ["{{base_url}}"],
-				"path": ["api", "courses", "{{course_id}}", "feedback"]
+				"raw": "{{base_url}}/api/courses/feedback/{{course_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses",
+				  "feedback",
+				  "{{course_id}}"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Get Course Feedback",
+			"request": {
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{auth_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/courses/feedback/{{course_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "courses",
+				  "feedback",
+				  "{{course_id}}"
+				]
 			  }
 			}
 		  }
 		]
 	  },
 	  {
-		"name": "Views",
+		"name": "Teachers",
 		"item": [
 		  {
-			"name": "Get Course Views",
+			"name": "Follow a Teacher",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{student_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/teachers/follow/{{teacher_id}}",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "teachers",
+				  "follow",
+				  "{{teacher_id}}"
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Get Teacher Stats",
 			"request": {
 			  "method": "GET",
 			  "header": [
@@ -237,9 +713,15 @@
 				}
 			  ],
 			  "url": {
-				"raw": "{{base_url}}/api/courses/{{course_id}}/views",
-				"host": ["{{base_url}}"],
-				"path": ["api", "courses", "{{course_id}}", "views"]
+				"raw": "{{base_url}}/api/teachers/stats",
+				"host": [
+				  "{{base_url}}"
+				],
+				"path": [
+				  "api",
+				  "teachers",
+				  "stats"
+				]
 			  }
 			}
 		  }
@@ -253,14 +735,22 @@
 	  },
 	  {
 		"key": "auth_token",
-		"value": ""
+		"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiYTA1NTk3YjJmYjEyMmY5MmRmNjciLCJyb2xlIjoidGVhY2hlciIsImlhdCI6MTc0NTc3MDA1NiwiZXhwIjoxNzQ2NjM0MDU2fQ.V6zL8Y3vYOOFmB-pLKnx767_KNlMpZP5u5KhJxCgKHs"
 	  },
 	  {
 		"key": "student_token",
-		"value": ""
+		"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiYTA1Mjk3YjJmYjEyMmY5MmRmNjEiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc0NTc3MjU1MSwiZXhwIjoxNzQ2NjM2NTUxfQ.zLteO5hN9LRUWmgrjePRjDrfiLoSqYmpaav4ZEShydA"
 	  },
 	  {
 		"key": "teacher_token",
+		"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiYTA1NTk3YjJmYjEyMmY5MmRmNjciLCJyb2xlIjoidGVhY2hlciIsImlhdCI6MTc0NTc3MDA1NiwiZXhwIjoxNzQ2NjM0MDU2fQ.V6zL8Y3vYOOFmB-pLKnx767_KNlMpZP5u5KhJxCgKHs"
+	  },
+	  {
+		"key": "admin_token",
+		"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiYTA1NTk3YjJmYjEyMmY5MmRmNjciLCJyb2xlIjoidGVhY2hlciIsImlhdCI6MTc0NTc3MDA1NiwiZXhwIjoxNzQ2NjM0MDU2fQ.V6zL8Y3vYOOFmB-pLKnx767_KNlMpZP5u5KhJxCgKHs"
+	  },
+	  {
+		"key": "user_id",
 		"value": ""
 	  },
 	  {
@@ -268,7 +758,19 @@
 		"value": ""
 	  },
 	  {
+		"key": "lesson_id",
+		"value": ""
+	  },
+	  {
+		"key": "topic_id",
+		"value": ""
+	  },
+	  {
 		"key": "teacher_id",
+		"value": ""
+	  },
+	  {
+		"key": "enrollment_id",
 		"value": ""
 	  }
 	],
@@ -286,7 +788,7 @@
 		"listen": "test",
 		"script": {
 		  "exec": [
-			""
+			"pm.test(\"Status code is 200\", function() {\n    pm.response.to.have.status(200);\n});"
 		  ],
 		  "type": "text/javascript"
 		}

@@ -12,7 +12,7 @@ const createCourseValidationSchema = z.object({
 
     teacher: z.string({
       required_error: 'Teacher ID is required',
-    }).regex(/^[0-9a-fA-F]{24}$/, { message: 'Invalid teacher ObjectId' }), // MongoDB ObjectId check
+    }).regex(/^[0-9a-fA-F]{24}$/, { message: 'Invalid teacher ObjectId' }).optional(), // MongoDB ObjectId check
 
     thumbnail: z.string().optional(),
 

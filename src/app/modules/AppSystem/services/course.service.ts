@@ -8,7 +8,8 @@ import { Lesson } from '../models/lesson.model';
 import { Feedback } from '../models/teacher.model';
 
 
-const createCourseIntoDB = async (payload: TCourse) => {
+const createCourseIntoDB = async (payload: TCourse, userId: string) => {
+  payload.teacher = new Types.ObjectId(userId)
   const result = await Course.create(payload);
   return result;
 };
