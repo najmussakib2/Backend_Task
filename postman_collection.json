@@ -1,0 +1,295 @@
+{
+	"info": {
+	  "_postman_id": "a1b2c3d4-e5f6-7890-f1e2-d3c4b5a6f7e8",
+	  "name": "Course Learning App API",
+	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+	  "description": "Postman collection for Course Learning App backend API"
+	},
+	"item": [
+	  {
+		"name": "Authentication",
+		"item": [
+		  {
+			"name": "Register User",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"student\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/auth/register",
+				"host": ["{{base_url}}"],
+				"path": ["api", "auth", "register"]
+			  }
+			}
+		  },
+		  {
+			"name": "Login User",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/auth/login",
+				"host": ["{{base_url}}"],
+				"path": ["api", "auth", "login"]
+			  }
+			}
+		  },
+		  {
+			"name": "Get Current User",
+			"request": {
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{auth_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/auth/me",
+				"host": ["{{base_url}}"],
+				"path": ["api", "auth", "me"]
+			  }
+			}
+		  }
+		]
+	  },
+	  {
+		"name": "Courses",
+		"item": [
+		  {
+			"name": "Create Course (Teacher)",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				},
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"title\": \"Introduction to Node.js\",\n  \"description\": \"Learn the fundamentals of Node.js\",\n  \"category\": \"Programming\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/courses",
+				"host": ["{{base_url}}"],
+				"path": ["api", "courses"]
+			  }
+			}
+		  },
+		  {
+			"name": "Get All Courses",
+			"request": {
+			  "method": "GET",
+			  "url": {
+				"raw": "{{base_url}}/api/courses",
+				"host": ["{{base_url}}"],
+				"path": ["api", "courses"],
+				"query": [
+				  {
+					"key": "page",
+					"value": "1"
+				  },
+				  {
+					"key": "limit",
+					"value": "10"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"name": "Get Course Details",
+			"request": {
+			  "method": "GET",
+			  "url": {
+				"raw": "{{base_url}}/api/courses/{{course_id}}",
+				"host": ["{{base_url}}"],
+				"path": ["api", "courses", "{{course_id}}"]
+			  }
+			}
+		  }
+		]
+	  },
+	  {
+		"name": "Enrollments",
+		"item": [
+		  {
+			"name": "Enroll in Course",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{student_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/courses/{{course_id}}/enroll",
+				"host": ["{{base_url}}"],
+				"path": ["api", "courses", "{{course_id}}", "enroll"]
+			  }
+			}
+		  },
+		  {
+			"name": "Get User Enrollments",
+			"request": {
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{student_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/enrollments",
+				"host": ["{{base_url}}"],
+				"path": ["api", "enrollments"]
+			  }
+			}
+		  }
+		]
+	  },
+	  {
+		"name": "Teacher Stats",
+		"item": [
+		  {
+			"name": "Get Teacher Stats",
+			"request": {
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/teachers/{{teacher_id}}/stats",
+				"host": ["{{base_url}}"],
+				"path": ["api", "teachers", "{{teacher_id}}", "stats"]
+			  }
+			}
+		  }
+		]
+	  },
+	  {
+		"name": "Feedback",
+		"item": [
+		  {
+			"name": "Submit Feedback",
+			"request": {
+			  "method": "POST",
+			  "header": [
+				{
+				  "key": "Content-Type",
+				  "value": "application/json"
+				},
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{student_token}}"
+				}
+			  ],
+			  "body": {
+				"mode": "raw",
+				"raw": "{\n  \"rating\": 5,\n  \"comment\": \"Great course!\"\n}"
+			  },
+			  "url": {
+				"raw": "{{base_url}}/api/courses/{{course_id}}/feedback",
+				"host": ["{{base_url}}"],
+				"path": ["api", "courses", "{{course_id}}", "feedback"]
+			  }
+			}
+		  }
+		]
+	  },
+	  {
+		"name": "Views",
+		"item": [
+		  {
+			"name": "Get Course Views",
+			"request": {
+			  "method": "GET",
+			  "header": [
+				{
+				  "key": "Authorization",
+				  "value": "Bearer {{teacher_token}}"
+				}
+			  ],
+			  "url": {
+				"raw": "{{base_url}}/api/courses/{{course_id}}/views",
+				"host": ["{{base_url}}"],
+				"path": ["api", "courses", "{{course_id}}", "views"]
+			  }
+			}
+		  }
+		]
+	  }
+	],
+	"variable": [
+	  {
+		"key": "base_url",
+		"value": "http://localhost:5000"
+	  },
+	  {
+		"key": "auth_token",
+		"value": ""
+	  },
+	  {
+		"key": "student_token",
+		"value": ""
+	  },
+	  {
+		"key": "teacher_token",
+		"value": ""
+	  },
+	  {
+		"key": "course_id",
+		"value": ""
+	  },
+	  {
+		"key": "teacher_id",
+		"value": ""
+	  }
+	],
+	"event": [
+	  {
+		"listen": "prerequest",
+		"script": {
+		  "exec": [
+			""
+		  ],
+		  "type": "text/javascript"
+		}
+	  },
+	  {
+		"listen": "test",
+		"script": {
+		  "exec": [
+			""
+		  ],
+		  "type": "text/javascript"
+		}
+	  }
+	]
+  }
